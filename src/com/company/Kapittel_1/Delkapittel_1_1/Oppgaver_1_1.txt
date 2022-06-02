@@ -1,0 +1,31 @@
+1.1.1
+    1. 	Søk på internett med navnet al-Khwarizmi som søkeord. Hva finner du?
+
+Informasjon og lenker til hvem al-Khwarizmi er og hva han er kjent for.
+
+
+    2. 	Lag en norsk versjon av den engelske algoritme-definisjonen over!
+
+En algoritme er en vell-ordnet samling av entydlige og effektivt beregnlige operasjoners som, når utføres, produserer et resultat og stopper i en avgrenset mengde tid.
+
+
+    3. 	Søk på internett etter alle sider som inneholder ordene data structure (eventuelt data structures) og algorithm (eventuelt algorithms). Hvor mange treff får du?
+
+data structure: 47 800 000
+data structures: 57 700 000
+algorithm: 621 000 000
+algorithms: 605 000 000
+
+
+
+1.1.2
+    1. 	Anta at vi har en min-metode, dvs. en metode som finner (og returnerer) posisjonen til den minste verdien i en tabell. Hva ville metodekallet min(a) returnere med hvis a er tabellen i Figur 1.1.2?
+
+
+
+
+    2. 	Lag en min-metode på samme måte som maks-metoden i Programkode 1.1.2, dvs. en metode som finner (og returnerer) posisjonen til den minste verdien i en tabell.
+
+
+
+    3. 	Hvis den største verdien forekommer flere ganger, vil maks-metoden returnere posisjonen til den første av dem. Hva må endres for at den skal returnere posisjonen til den siste?
