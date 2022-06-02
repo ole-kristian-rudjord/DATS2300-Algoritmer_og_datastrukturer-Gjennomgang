@@ -21,11 +21,19 @@ algorithms: 605 000 000
 1.1.2
     1. 	Anta at vi har en min-metode, dvs. en metode som finner (og returnerer) posisjonen til den minste verdien i en tabell. Hva ville metodekallet min(a) returnere med hvis a er tabellen i Figur 1.1.2?
 
-
+6
 
 
     2. 	Lag en min-metode på samme måte som maks-metoden i Programkode 1.1.2, dvs. en metode som finner (og returnerer) posisjonen til den minste verdien i en tabell.
 
+// Oppgavekode 1.1.2 | 2.
 
 
     3. 	Hvis den største verdien forekommer flere ganger, vil maks-metoden returnere posisjonen til den første av dem. Hva må endres for at den skal returnere posisjonen til den siste?
+
+Vi endrer if-setningen fra å være "a[i] > a[m]" til "a[i] >= a[m]".
+Det er også mulig å gå gjennom tabellen i motsatt rekkefølge. Da starter vi altså på enden og dekrementere med -1 hver gang for-løkken gjennomgås.
+
+
+
+1.1.3

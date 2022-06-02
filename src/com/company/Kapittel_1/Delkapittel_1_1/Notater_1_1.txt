@@ -1,0 +1,16 @@
+1.1.3
+Arbeidsoperasjoner er enten sammensatt (compound) eller grunnleggende (primitive).
+Grunnleggende = arbeidsoperasjonen kan ikke deles opp i enklere operasjoner.
+
+tilordning = en variabel får en verdi
+tabelloperasjon = en tabellverdi aksesseres
+sammenligning = to verdier sammenlignes
+regneoperasjon = f.eks. en addisjon av to tall
+
+Eksempel på sammensatt arbeidsoperasjoner:
+if (a[i] > a[m])
+to tabellopperasjoner: a[i] og m[i]
+én sammenligning: >
+
+Dominerende operasjoner = de viktigeste operasjonene i algoritmen.
+
