@@ -1,4 +1,4 @@
-1.1.1
+Oppgaver til Avsnitt 1.1.1
     1. 	Søk på internett med navnet al-Khwarizmi som søkeord. Hva finner du?
 
 Informasjon og lenker til hvem al-Khwarizmi er og hva han er kjent for.
@@ -18,7 +18,8 @@ algorithms: 605 000 000
 
 
 
-1.1.2
+
+Oppgaver til Avsnitt 1.1.2
     1. 	Anta at vi har en min-metode, dvs. en metode som finner (og returnerer) posisjonen til den minste verdien i en tabell. Hva ville metodekallet min(a) returnere med hvis a er tabellen i Figur 1.1.2?
 
 6
@@ -27,7 +28,17 @@ algorithms: 605 000 000
     2. 	Lag en min-metode på samme måte som maks-metoden i Programkode 1.1.2, dvs. en metode som finner (og returnerer) posisjonen til den minste verdien i en tabell.
 
 // Oppgavekode 1.1.2 | 2.
+public static int min(int[] a) {
+    if (a.length < 1) throw new java.util.NoSuchElementException("Tabellen er tom");
 
+    int m = 0;
+
+    for (int i = 1; i < a.length; i++) {
+        if (a[i] < a[m]) m = i;
+    }
+
+    return m;
+}
 
     3. 	Hvis den største verdien forekommer flere ganger, vil maks-metoden returnere posisjonen til den første av dem. Hva må endres for at den skal returnere posisjonen til den siste?
 
@@ -36,4 +47,295 @@ Det er også mulig å gå gjennom tabellen i motsatt rekkefølge. Da starter vi 
 
 
 
-1.1.3
+
+Oppgaver til Avsnitt 1.1.3
+1. 	Et eksempel på en oppgave som kan løses på mange forskjellige måter er det å sortere verdiene i en tabell. Hvor mange sorteringsalgoritmer kjenner du til? På Wikipedia finner du en oversikt over sorteringsalgoritmer.
+
+Select sort         utvalgssortering
+Insertioin sort     innsettingssortering
+Bubble sort         boblesortering
+Quick sort          kvikksortering
+Merge sort          flettesortering
+Heap sort           heapsortering
+Radix sort          grunntallssortering
+
+
+
+2. 	Gitt en tabell med verdiene 10, 5, 7, 2, 9, 1, 3, 8, 4, 6. Hvor mange grunnleggende operasjoner vil algoritmen i Programkode 1.1.2 utføre på denne tabellen. Se regnskapet over og Eksempel 1.1.3.
+
+if (a.length < 1)       = 1
+int m = 0;              = 1
+int i = 1;              = 1
+i < a.length;           = n
+i++                     = n - 1
+if (a[i] > a[m])        = 3(n - 1)
+m = i;                  = x
+return m;               = 1
+
+1 + 1 + 1 + n + n - 1 + 3(n - 1) + x + 1
+
+5n + x
+
+5*10 + 0 = 50
+
+
+3. 	Som oppgave 2, men med verdiene 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+
+5*10 + 9 = 59
+
+
+4. 	Som oppgave 2, men med verdiene 1, 3, 2, 7, 5, 9, 6, 8, 10, 4.
+
+5*10 + 4 = 54
+
+
+5. 	Lag en metode public static int[] minmaks(int[] a). Den skal ved hjelp av en int-tabell med lengde 2 returnere posisjonene til minste og største verdi i tabellen a. Hvis du har funnet at m1 er posisjonen til den minste og m2 til den største, kan du returnere tabellen b definert ved:   int[] b = {m1, m2}; Hvor mange sammenligninger bruker metoden din?
+
+// Oppgavekode 1.1.3 | 5.
+public static int[] minmaks(int[] a) {
+    if (a.length < 1) throw new java.util.NoSuchElementException("Tabellen er tom!");
+
+    int min = 0;
+    int maks = 0;
+    int minverdi = a[0];
+    int maksverdi = a[0];
+
+    for (int i = 1; i < a.length; i++) {
+
+        if (a[i] < minverdi) {
+            min = i;
+            minverdi = a[i];
+        }
+        else if (a[i] > maksverdi) maks = i;
+    }
+
+    int[] resultat = {min, maks};
+
+    return resultat;
+}
+
+
+6. 	Utrykket n! betyr n fakultet og er gitt ved n! = n · (n-1) ·  ·  · 2 · 1 . Lag en metode
+long fak(int n) som regner ut n! . Hvor mange multiplikasjoner utføres i metoden?
+
+// Oppgavekode 1.1.3 | 6.
+public static long fak(int n) {
+    if (n < 0) throw new IllegalArgumentException("n < 0");
+    long total = n;
+    while (n > 1) {
+        n--;
+        total *= n;
+    }
+    return total;
+}
+
+
+
+Oppgaver til Avsnitt 1.1.4
+    1. 	Hvor mange grunnleggende operasjoner utfører Programkode 1.1.4 hvis tabellen a inneholder i) 10, 5, 7, 2, 9, 1, 3, 8, 4, 6  ii) 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 og iii) 1, 3, 2, 7, 5, 9, 6, 8, 10, 4. Sammenlign med svarene i oppgave 2, 3 og 4 fra Avsnitt 1.1.3.
+
+
+Grunnleggende operasjoner:
+1 + 1 + 1 + n + n - 1 + 2(n - 1) + 3x + 1
+1 + 4n + 3x
+
+i)
+1 + 4*10 + 0
+41
+
+ii)
+1 + 4*10 + 9
+50
+
+iii)
+1 + 4*10 + 4
+45
+
+
+
+
+Oppgaver til Avsnitt 1.1.5
+    1. 	Sjekk at Programkode 1.1.5 gir korrekte resultater. Hva skjer hvis a har lengde 1 og hva hvis a er tom (lengde 0). Se også Avsnitt 1.1.7.
+
+public static int maks(int[] a)  // versjon 3 av maks-metoden
+{
+    int sist = a.length - 1;                                // 1
+    int m = 0;                                              // 1
+    int maksverdi = a[0];                                   // 2
+    int temp = a[sist];                                     // 2
+    a[sist] = 0x7fffffff;                                   // 2
+
+    for (int i = 0; ; i++)                                  // 1 | n - 1
+        if (a[i] >= maksverdi)                              // 2(n - 1)
+        {
+            if (i == sist)                                  // x
+            {
+              a[sist] = temp;                               // 2x
+              return temp >= maksverdi ? sist : m;          // 2x
+            }
+            else
+            {
+              maksverdi = a[i];                             // 2x
+              m = i;                                        // x
+            }
+        }
+}
+
+Grunnleggende operasjoner: 1 + 1 + 2 + 2 + 2 + 1 + n - 1 + 2(n - 1) + x + 2x + 2x + 2x
+                           4 + 3n + x + (4x || 3x)
+
+
+    2. 	Gjør om Programkode 1.1.5 slik at posisjonen til den første av dem returneres hvis den største verdien ligger flere steder.
+
+public static int maks(int[] a)
+{
+    int sist = a.length - 1;
+    int m = 0;
+    int maksverdi = a[0];
+    int temp = a[sist];
+    a[sist] = 0x7fffffff;
+
+    for (int i = 0; ; i++)
+        if (a[i] >= maksverdi)
+        {
+            if (i == sist)
+            {
+              a[sist] = temp;
+              return temp > maksverdi ? sist : m;  // Fjerne = fra >=
+            }
+            else if (a[i] > maksverdi) // Legge til if
+            {
+              maksverdi = a[i];
+              m = i;
+            }
+        }
+}
+
+
+    3. 	En vaktpostverdi må være større enn eller lik alle mulige tabellverdier. Men ikke alle typer har en maksverdi slik som int har. Vi kan isteden la tabellens siste posisjon hele tiden inneholde det samme som hjelpevariablen maksverdi. Dermed vil  a[i] >= maksverdi helt sikker bli sann når i blir lik sist. Innfør denne idéen i Programkode 1.1.5.
+
+public static int maks(int[] a)
+{
+    int sist = a.length - 1;
+    int m = 0;
+    int maksverdi = a[0];
+    int temp = a[sist];
+    a[sist] = maksverdi;
+
+    for (int i = 0; ; i++)
+        if (a[i] >= maksverdi)
+        {
+            if (i == sist)
+            {
+              a[sist] = temp;
+              return temp >= maksverdi ? sist : m;
+            }
+            else
+            {
+              maksverdi = a[i];
+              a[sist] = maksverdi;
+              m = i;
+            }
+        }
+}
+
+
+
+
+Oppgaver til Avsnitt 1.1.6
+    1. 	Vis at Setning 1.1.6 a) stemmer for n = 5. Se på alle de 120 forskjellige permutasjonene av tallene 1, 2, 3, 4 og 5. Flg. observasjon kan forenkle arbeidet: De 24 permutasjonene der 5 står først, inneholder ingen tall som er større enn alle foran. Blant de 24 der 5 står som nr 2, vil det være nøyaktig ett tall (5 selv) som er større enn de foran. Osv.
+
+???
+
+
+    2. 	La a(n,k) være antallet permutasjoner av 1, . . , n  som har nøyaktig k tall som er større enn det største foran. F.eks. er a(3,1) = 3 fordi de tre permutasjonene (1,3,2), (2,1,3) og (2,3,1) (og ingen andre) har nøyaktig ett tall som er større enn alle foran. Finn a(3,0), a(3,2), a(4,0), a(4,1), a(4,2) og a(4,3).
+
+???
+
+
+    3. 	Lag metoden public static double harmonisk(int n). Metoden skal ved hjelp av en løkke regne ut (og returnere) det n-te harmoniske tallet.
+
+// Oppgavekode 1.1.6 | 3.
+public static double harmonisk(int n) {
+    double total = 0.0;
+    for (int i = 1; i <= n; i++) {
+        total += 1.0 / i;
+    }
+    return total;
+}
+
+    4. 	Lag metoden public static double euler(int n). Den skal returnere differansen mellom Hn og log(n). I Java gir Math.log(n) oss den naturlige logaritmen til n. Hvor stor må n være for at euler(n) skal returnere et tall som starter med 0,577 som de tre første desimalene?
+
+// Oppgavekode 1.1.6 | 4.
+public static double euler(int n) {
+    return harmonisk(n) - Math.log(n);
+}
+
+
+    5. 	Lag en programbit som gir resultatene i Tabell 1.1.6.
+
+// Oppgavekode 1.1.6 | 3.
+public static double oppgave1_1_6__3(int n) {
+    /*return Math.log(n) - 0.423;*/
+    double total = 0.0;
+    for (int i = 2; i <= n; i++) {
+        total += 1.0 / i;
+    }
+    return total;
+}
+
+int n = 10;
+for (int i = 0; i < 7; i++) // utføres 7 ganger
+{
+    double x = Math.log(n) - 0.423;
+    System.out.printf("n = %-8d   ln(n)-0.423 = %4.1f\n",n,x);
+    n *= 10;
+}
+
+
+
+
+Oppgaver til Avsnitt 1.1.7
+    1. 	Lag et main-program med metoden makstest der Programkode 1.1.2 testes. Hva skjer?
+
+Se klasse: Oppgave1_1_7__1 for kode.
+Når koden kjøres skjer ingenting ettersom det ikke oppstår feil.
+
+
+    2. 	Utvid metoden makstest. Bruk tabeller der den største er først, er sist og forekommer flere steder. Bruk en tabell med kun én verdi, kun to verdier som er ulike og kun to verdier som er like. Lag en test for en null-tabell. La også makstest returnere antall feil.
+
+
+
+
+    3. 	Bruk makstest på de to versjonene i Programkode 1.1.4 og 1.1.5. Da vil det bl.a. komme melding om at det kastes feil unntak for en tom tabell. Hvilket unntak kastes? Gjør om koden slik at rett unntak kastes. Programkode 1.1.5 gir feil svar hvis den største verdien ligger flere steder. Rett opp koden! Se også Oppgave 2 i Avsnitt 1.1.5.
+
+
+
+
+    4. 	Sett deg inn i begrepet assert i Java.
+
+
+
+
+    5. 	Lag et program som kjører Programkode 1.1.7 c). Gjør om koden slik at resultatet fanges, dvs. bruk koden: OptionalInt m = maks(a); Sjekk deretter om resultat har innhold (isPresent) og hvis den har det, skriv ut verdien ved å bruke getAsInt. Finn ut hvilke andre metoder klassen OptionalInt har.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
