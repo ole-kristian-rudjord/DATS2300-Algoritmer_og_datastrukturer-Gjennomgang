@@ -1,5 +1,8 @@
 package com.company.Kapittel_1.Delkapittel_1_1;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class Main_1_1 {
     // Programkode 1.1.2
     public static int maks(int[] a) { // a = heltallstabell
@@ -167,43 +170,213 @@ public class Main_1_1 {
     }
 
 
-    //
+    // Programkode 1.1.8 a)
+    public static int[] randPerm1(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            a[i] = r.nextInt(n) + 1;
+        }
+
+        return a;
+    }
+
+    // Programkode 1.1.8 b)
+    public static int[] randPerm2(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; ) {
+            int k = r.nextInt(n) + 1;
+
+            int j = 0;
+            for ( ; j < i; j++) {
+                if (a[j] == k) {
+                    break;
+                }
+            }
+            if (i == j) {
+                a[i++] = k;
+            }
+        }
+
+        return a;
+    }
+
+    // Programkode 1.1.8 c)
+    public static int[] randPerm3(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+        boolean[] har = new boolean[n];
+
+        for (int i = 0; i < n; ) {
+            int k = r.nextInt(n);
+            if (!har[k]) {
+                har[k] = true;
+                a[i++] = k + 1;
+            }
+        }
+
+        return a;
+    }
+
+    // Programkode 1.1.8 d)
+    public static void bytt(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    // Programkode 1.1.8 e)
+    public static int[] randPerm4(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+
+        Arrays.setAll(a, i -> i + 1);
+
+        for (int k = n - 1; k > 0; k--) {
+            int i = r.nextInt(k+1);
+            bytt(a,k,i);
+        }
+
+        return a;
+    }
+
+    // Programkode 1.1.8 f)
+    public static void randPerm5(int[] a) {
+        Random r = new Random();
+
+        for (int k = a.length - 1; k > 0; k--) {
+            int i = r.nextInt(k + 1);
+            bytt(a,k,i);
+        }
+    }
+
+    /*I randPerm-versjonen i Programkode 1.1.8 c) brukes det en boolsk hjelpetabell. Gjør om metoden slik at den bruker samme idé, men uten hjelpetabellen. Første kall på nextInt(n) gir en indeks k. Vi legger så inn 1 i a[k]. Neste kall på nextInt(n) gir en ny indeks k. Hvis a[k] ikke er 0, kaller vi nextInt(n) på nytt. Hvis derimot a[k] er 0, legger vi inn 2 i a[k]. Osv. til hele a er fylt opp.*/
+    // Oppgavekode 1.1.8 | 7.
+    public static int[] randPerm5(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+        /*boolean[] har = new boolean[n];*/
+
+        for (int i = 0; i < n; ) {
+            int k = r.nextInt(n);
+            if (a[k] != 0) {
+                a[k] = i++;
+            }
+            /*if (!har[k]) {
+                har[k] = true;
+                a[i++] = k + 1;
+            }*/
+        }
+
+        return a;
+    }
+
+    /*I Programkode 1.1.8 e) blir tallene som «fjernes» fra «beholderen» (tabellens «hvite» del) isteden lagt over i den «grå» delen. Lag en versjon av metoden der den «grå» delen er den venstre delen av tabellen og den «hvite» delen den høyre delen.*/
+    // Oppgavekode 1.1.8 | 10.
+    public static int[] randPerm6(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+
+        Arrays.setAll(a, i -> i + 1);
+
+        for (int k = 0; k < n; k++) {
+            int i = r.nextInt(a.length - k);
+            bytt(a,k,i);
+        }
+
+        return a;
+    }
+
+    /*Lag void randPerm(int[] a, int v, int h) slik at den stokker om intervallet a[v:h] i tabellen a. Resten av tabellen skal være uberørt. Se Programkode 1.1.8 f)*/
+    // Oppgavekode 1.1.8 | 11.
+    public static void randPerm7(int[] a, int v, int h) {
+        Random r = new Random();
+
+        for (int k = h - 1; k > v; k--) {
+            int i = r.nextInt(h+v);
+            bytt(a,k,i);
+        }
+    }
+    // ???
 
 
     public static void main(String[] args) {
-        int[] heltalltabell = {1,5,7,2,34,76,2,21};
+        /*int[] heltalltabell = {1,5,7,2,34,76,2,21};*/
 
         // Programkode 1.1.2
-        System.out.println(maks(heltalltabell));
+        /*System.out.println(maks(heltalltabell));*/
 
         // Oppgavekode 1.1.2 | 2.
-        System.out.println(min(heltalltabell));
+        /*System.out.println(min(heltalltabell));*/
 
         // Oppgavekode 1.1.3 | 5.
-        int[] oppgavekode1135 = minmaks(heltalltabell);
+        /*int[] oppgavekode1135 = minmaks(heltalltabell);
         for (int i = 0; i < oppgavekode1135.length; i++) {
             System.out.print(oppgavekode1135[i]);
-        }
+        }*/
 
-        System.out.println();
+        /*System.out.println();*/
 
         // Oppgavekode 1.1.3 | 6.
-        System.out.println(fak(5));
+        /*System.out.println(fak(5));*/
 
         // Oppgavekode 1.1.6 | 3.
-        System.out.println(harmonisk(100));
+        /*System.out.println(harmonisk(100));*/
 
         // Oppgavekode 1.1.6 | 4.
-        System.out.println(euler(637));
+        /*System.out.println(euler(637));*/
 
         // Oppgavekode 1.1.6 | 5.
-        System.out.println(oppgave1_1_6__3(100));
+        /*System.out.println(oppgave1_1_6__3(100));
         int n = 10;
         for (int i = 0; i < 7; i++) // utføres 7 ganger
         {
             double x = Math.log(n) - 0.423;
             System.out.printf("n = %-8d   ln(n)-0.423 = %4.1f\n",n,x);
             n *= 10;
-        }
+        }*/
+
+        // Programkode 1.1.8 c)
+        /*System.out.println(Arrays.toString(randPerm4(10)));*/
+
+        // Oppgave 1.1.8 | 1.
+        // Programkode 1.1.8 b)
+        /*System.out.println(Arrays.toString(randPerm2(10)));*/
+
+        // Oppgave 1.1.8 | 2.
+        /*int n2 = 100000;
+        long tid2 = System.currentTimeMillis();
+        int[] a2 = randPerm2(n2);
+        tid2 = System.currentTimeMillis() - tid2;
+        System.out.println(tid2);*/
+
+        // Oppgave 1.1.8 | 4.
+        // Programmkode 1.1.8 c)
+        /*System.out.println(Arrays.toString(randPerm3(10)));*/
+
+        // Oppgave 1.1.8 | 5.
+        /*int n3 = 100000;
+        long tid3 = System.currentTimeMillis();
+        int[] a3 = randPerm3(n3);
+        tid3 = System.currentTimeMillis() - tid3;
+        System.out.println(tid3);*/
+
+        // Oppgave 1.1.8 | 9.
+        /*int n4 = 100000;
+        long tid4 = System.currentTimeMillis();
+        int[] a4 = randPerm4(n4);
+        tid4 = System.currentTimeMillis() - tid4;
+        System.out.println(tid4);*/
+
+        // Oppgavekode 1.1.8 | 10.
+        /*System.out.println(Arrays.toString(randPerm6(10)));*/
+
+        // Oppgavekode 1.1.8 | 11.
+        /*int[] tabell = {1,2,3,4,5,6,7,8,9,10};
+        randPerm7(tabell, 5, 8);
+        System.out.println(Arrays.toString(tabell));*/
     }
 }

@@ -322,6 +322,135 @@ Når koden kjøres skjer ingenting ettersom det ikke oppstår feil.
 
 
 
+Oppgaver til Avsnitt 1.1.8
+    1.	Kjør den kodebiten som kommer rett etter Programkode 1.1.8 b) flere ganger og sjekk at det hele tiden kommer ut permutasjoner av tallene fra 1 til 10.
+
+// Oppgave 1.1.8 | 1.
+
+
+    2.	Flg. kodebit viser hvor lang tid det tar å generere en tilfeldig permutasjon av tallene fra 1 til n ved å bruke Programkode 1.1.8 b):
+
+      int n = 10000;
+      long tid = System.currentTimeMillis();
+      int[] a = randPerm(n);
+      tid = System.currentTimeMillis() - tid;
+      System.out.println(tid);
+
+    Hvor mange millisekunder bruker denne kodebiten på din maskin? Øk verdien på n slik at kodebiten bruker ca. 5 sekunder (5000 millisekunder).
+
+10 000: ca 100 - 130
+65 000: ca 5000
+
+
+    3.	Vis at metoden i Programkode 1.1.8 b) er av orden n2^2log(n) i gjennomsnitt.
+
+// Programkode 1.1.8 b)
+public static int[] randPerm2(int n) {
+    Random r = new Random();                    1
+    int[] a = new int[n];                       1
+
+    for (int i = 0; i < n; ) {                  1 && n
+        int k = r.nextInt(n) + 1;               n
+
+        int j = 0;                              1
+        for ( ; j < i; j++) {                   n^2 && n^2 - n
+            if (a[j] == k) {                    2n^2
+                break;                          x
+            }
+        }
+        if (i == j) {                           n - 1
+            a[i++] = k;                         3x  // a[] -> tabelloperasjon, i++ -> regneoperasjon, = -> tilordning
+        }
+    }
+
+    return a;                                   1
+}
+???
+
+
+    4.	Sjekk at randPerm-versjonen i Programkode 1.1.8 c) virker som den skal. Se Oppgave 1. Du kan f.eks. omdøpe den første til randPerm1 og den andre til randPerm2.
+
+// Oppgave 1.1.8 | 4.
+// Programmkode 1.1.8 c)
+System.out.println(Arrays.toString(randPerm3(10)));
+
+
+    5.	Gjør som i Oppgave 2, men bruk randPerm-versjonen i Programkode 1.1.8 c). Er det stor forskjell på de to versjonene?
+
+Veldig stor forskjell med 10 000:
+randPerm b) = 100
+randPerm c) = 3
+
+
+    6.	Vis at randPerm-versjonen i Programkode 1.1.8 c) er av orden n log(n) i gjennomsnitt.
+
+// Programkode 1.1.8 c)
+public static int[] randPerm3(int n) {
+    Random r = new Random();                    1
+    int[] a = new int[n];                       1
+    boolean[] har = new boolean[n];             1
+
+    for (int i = 0; i < n; ) {                  1 && n
+        int k = r.nextInt(n);                   n - 1
+        if (!har[k]) {                          2(n - 1)
+            har[k] = true;                      2x // tabellaksessering, tilordning
+            a[i++] = k + 1;                     4x // tabellaksessering, regneoperasjon, tilordning, regneoperasjon
+        }
+    }
+
+    return a;                                   1
+}
+
+
+    7.	I randPerm-versjonen i Programkode 1.1.8 c) brukes det en boolsk hjelpetabell. Gjør om metoden slik at den bruker samme idé, men uten hjelpetabellen. Første kall på nextInt(n) gir en indeks k. Vi legger så inn 1 i a[k]. Neste kall på nextInt(n) gir en ny indeks k. Hvis a[k] ikke er 0, kaller vi nextInt(n) på nytt. Hvis derimot a[k] er 0, legger vi inn 2 i a[k]. Osv. til hele a er fylt opp.
+
+// Oppgavekode 1.1.8 | 7.
+
+
+    8.	Sjekk at den versjonen av randPerm som står i Programkode 1.1.8 e) virker som den skal. Se Oppgave 1. Du kan f.eks. omdøpe den første versjonen til randPerm1, den andre til randPerm2 og denne til randPerm3.
+
+// Programkode 1.1.8 e)
+
+
+    9.	Gjør som i Oppgave 2, men bruk randPerm-versjonen i Programkode 1.1.8 e). Er det stor forskjell på de tre versjonene? Hvilken av dem bør vi ta vare på og bruke senere når vi trenger en slik metode?
+
+Veldig stor forskjell med 100 000:
+randPerm b) = 13584
+randPerm c) = 12
+randPerm e) = 7
+
+
+    10.	I Programkode 1.1.8 e) blir tallene som «fjernes» fra «beholderen» (tabellens «hvite» del) isteden lagt over i den «grå» delen. Lag en versjon av metoden der den «grå» delen er den venstre delen av tabellen og den «hvite» delen den høyre delen.
+
+// Oppgavekode 1.1.8 | 10.
+public static int[] randPerm6(int n) {
+    Random r = new Random();
+    int[] a = new int[n];
+
+    Arrays.setAll(a, i -> i + 1);
+
+    for (int k = 0; k < n; k++) {
+        int i = r.nextInt(a.length - k);
+        bytt(a,k,i);
+    }
+
+    return a;
+}
+
+
+    11.	Lag void randPerm(int[] a, int v, int h) slik at den stokker om intervallet a[v:h] i tabellen a. Resten av tabellen skal være uberørt. Se Programkode 1.1.8 f).
+
+// Oppgavekode 1.1.8 | 11.
+
+
+    12.	Tar vi ut fortløpende (uten tilbakelegging) k tilfeldige tall fra 1 til n får vi et ordnet k-utvalg (eller en k-permutasjon). Lag metoden int[] randPerm(int n, int k). Den skal returnere et tilfeldig ordnet k-utvalg (0 <= k <= n).
+
+
+
+
+    13.	Java har ingen ferdig metode som lager en tilfeldig heltallstabell. En omvei: Legg tallene fra 1 til n i en ArrayList<Integer>, bruk metoden shuffle i klassen Collections og hent så tallene fra listen og legg dem over i en int-tabell. Prøv dette!
+
+
 
 
 
