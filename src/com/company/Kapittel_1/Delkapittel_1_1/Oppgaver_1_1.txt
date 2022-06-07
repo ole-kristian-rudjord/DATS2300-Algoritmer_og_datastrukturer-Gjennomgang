@@ -441,11 +441,33 @@ public static int[] randPerm6(int n) {
     11.	Lag void randPerm(int[] a, int v, int h) slik at den stokker om intervallet a[v:h] i tabellen a. Resten av tabellen skal være uberørt. Se Programkode 1.1.8 f).
 
 // Oppgavekode 1.1.8 | 11.
+public static void randPerm7(int[] a, int v, int h) {
+    Random r = new Random();
+
+    for (int k = h - 1; k > v; k--) {
+        int i = r.nextInt(k - v + 1) + v;
+        bytt(a,k,i);
+    }
+}
 
 
     12.	Tar vi ut fortløpende (uten tilbakelegging) k tilfeldige tall fra 1 til n får vi et ordnet k-utvalg (eller en k-permutasjon). Lag metoden int[] randPerm(int n, int k). Den skal returnere et tilfeldig ordnet k-utvalg (0 <= k <= n).
 
+public static int[] randPerm8(int n, int k) {
+    Random r = new Random();
+    int[] a = new int[k - n + 1];
 
+    for (int i = n; i <= k; i++) {
+        a[i - n] = i;
+    }
+
+    for (int v = 0; v < n; v++) {
+        int i = r.nextInt(a.length - v);
+        bytt(a,v,i);
+    }
+
+    return a;
+}
 
 
     13.	Java har ingen ferdig metode som lager en tilfeldig heltallstabell. En omvei: Legg tallene fra 1 til n i en ArrayList<Integer>, bruk metoden shuffle i klassen Collections og hent så tallene fra listen og legg dem over i en int-tabell. Prøv dette!
@@ -453,14 +475,64 @@ public static int[] randPerm6(int n) {
 
 
 
+Oppgaver til Avsnitt 1.1.9
+    1.	Kjør programmet i Programkode 1.1.9 b) flere ganger. Hvilke resultater får du?
+
+Resultatene er veldig like det som er forventet.
+
+
+    2.	Istedenfor å kalle randPerm fra Programkode 1.1.8 e) flere ganger, kan vi la randPerm fra Programkode 1.1.8 f) omstokke en eksisterende permutasjon på nytt og på nytt. Bruk den ideen i Programkode 1.1.9 b). Kall f.eks. antallMaks 10 ganger (bruk for-løkke) og summér verdiene som den returnerer. Avslutt med å skrive ut gjennomsnittet. Kjør så programmet for flere n-verdier enn n = 100000.
+
+// Oppgave1_1_9__2.java
 
 
 
 
+Oppgaver til Avsnitt 1.1.10
+    1.	Utvid class Program og gjør om main-metoden slik som det bes om i Programkode 1.1.10. Kjør programmet! Du kan endre tidsforbruket ved å endre tabellstørrelse og antall gjentagelser. Lag f.eks. tabellen være dobbelt så stor (n = 200_000).
+
+// Oppgave1_1_10__1.java
+
+
+    2.	Gjør om main-metoden slik at tabellen a inneholder tallene fra 1 til n i sortert rekkefølge. Hvordan går det da med tidsforbruket?
+
+// Oppgave1_1_10__1.java
+maks3() blir tregere ettersom den inneholder flere operasjoner når den finner en verdi høyere enn tidligere maksverdi.
+
+
+    3.	Har du tilgang til flere datamaskiner? Er tidsforbruket avhengig av hvilket miljø dette kompileres og kjøres i?
+
+Det er avhengig av det, ja.
 
 
 
 
+Oppgaver til Avsnitt 1.1.11
+    1.	Kjør Programkode 1.1.11. Utvid slik at vi i tillegg får den minste verdien (metoden min()). Da må det lages en ny strøm. Hva skjer hvis tabellen a er tom (lengde lik 0)?
+
+// Programkode 1.1.11
+Hvis tabellen er tom skrives det ikke ut noen verdi.
+
+
+    2.	Metoden sum() finner summen som et int-tall. Bruk den til å finne tabellens sum. Hva skjer hvis du bruker en tom tabell?
+
+// Programkode 1.1.11
+Hvis tabellen er tom blir summen = 0;
+
+
+    3.	Metoden average() returnerer en OptionalDouble og den har metoden getAsDouble(). Gjør om Programkode 1.1.11 slik at tabellens gjennomsnittsverdi skrives ut. Da må det øverst være med: import java.util.OptionalDouble;
+
+// Programkode 1.1.11
+
+
+    4.	Metoden summaryStatistics() returnerer en IntSummaryStatistics. Da får en både maks, min, gjennomsnitt, sum og antall på én gang. Prøv den.
+
+// Programkode 1.1.11
+
+
+    5.	Grensesnittet IntStream har mange metoder med funksjonsgrensesnitt som parameter. Klarer du å bruke noen av dem. Vi skal diskutere slike metoder senere.
+
+???
 
 
 

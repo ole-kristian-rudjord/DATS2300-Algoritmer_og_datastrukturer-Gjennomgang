@@ -1,7 +1,7 @@
 package com.company.Kapittel_1.Delkapittel_1_1;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class Main_1_1 {
     // Programkode 1.1.2
@@ -262,8 +262,8 @@ public class Main_1_1 {
 
         for (int i = 0; i < n; ) {
             int k = r.nextInt(n);
-            if (a[k] != 0) {
-                a[k] = i++;
+            if (a[k] == 0) {
+                a[k] = ++i;
             }
             /*if (!har[k]) {
                 har[k] = true;
@@ -283,7 +283,7 @@ public class Main_1_1 {
         Arrays.setAll(a, i -> i + 1);
 
         for (int k = 0; k < n; k++) {
-            int i = r.nextInt(a.length - k);
+            int i = r.nextInt(n - k) + k;
             bytt(a,k,i);
         }
 
@@ -295,12 +295,81 @@ public class Main_1_1 {
     public static void randPerm7(int[] a, int v, int h) {
         Random r = new Random();
 
-        for (int k = h - 1; k > v; k--) {
-            int i = r.nextInt(h+v);
+        for (int k = h; k > v; k--) {
+            int i = r.nextInt(k - v + 1) + v;
             bytt(a,k,i);
         }
     }
     // ???
+
+    public static void randPerm9(int[] a, int v, int h)
+    {
+        if (v < 0 || h >= a.length)
+            throw new IllegalArgumentException("Ulovlig intervall!");
+
+        Random r = new Random();
+
+        for (int k = h; k > v; k--)
+        {
+            int i = r.nextInt(k - v + 1);
+            bytt(a,k,v + i);
+        }
+    }
+
+
+    /*Tar vi ut fortløpende (uten tilbakelegging) k tilfeldige tall fra 1 til n får vi et ordnet k-utvalg (eller en k-permutasjon). Lag metoden int[] randPerm(int n, int k). Den skal returnere et tilfeldig ordnet k-utvalg (0 <= k <= n).*/
+    // Oppgavekode 1.1.8 | 12.
+    public static int[] randPerm8(int n, int k) {
+        Random r = new Random();
+        int[] a = new int[k - n + 1];
+
+        for (int i = n; i <= k; i++) {
+            a[i - n] = i;
+        }
+
+        for (int v = 0; v < n; v++) {
+            int i = r.nextInt(a.length - v);
+            bytt(a,v,i);
+        }
+
+        return a;
+    }
+
+    public static int[] randPerm10(int n, int k)
+    {
+        if (k < 0 || k > n)
+            throw new IllegalArgumentException("Ulovlig k!");
+
+        int[] a = new int[n];   // fyller tabellen med 1, 2, . . , n
+        for (int i = 0; i < n; i++) a[i] = i+1;
+
+        Random r = new Random();
+
+        for (int j = n-1; j >= n-k; j--)
+        {
+            int i = r.nextInt(j+1);
+            bytt(a,i,j);
+        }
+
+        int[] b = new int[k];
+        System.arraycopy(a,n-k,b,0,k);
+        return b;   // tabellen med permutasjonen returneres
+    }
+
+    // Programkode 1.1.9 a)
+    public static int antallMaks(int[] a) {
+        int antall = 0;
+        int maksverdi = a[0];
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > maksverdi) {
+                antall++;
+                maksverdi = a[i];
+            }
+        }
+
+        return antall;
+    }
 
 
     public static void main(String[] args) {
@@ -375,8 +444,65 @@ public class Main_1_1 {
         /*System.out.println(Arrays.toString(randPerm6(10)));*/
 
         // Oppgavekode 1.1.8 | 11.
-        /*int[] tabell = {1,2,3,4,5,6,7,8,9,10};
-        randPerm7(tabell, 5, 8);
-        System.out.println(Arrays.toString(tabell));*/
+        /*int[] tabell1 = {1,2,3,4,5,6,7,8,9,10};
+        randPerm7(tabell1, 5, 8);
+        System.out.println(Arrays.toString(tabell1));
+
+        int[] tabell2 = {1,2,3,4,5,6,7,8,9,10};
+        randPerm7(tabell2, 5, 8);
+        System.out.println(Arrays.toString(tabell2));
+
+        int[] tabell3 = {1,2,3,4,5,6,7,8,9,10};
+        randPerm7(tabell3, 5, 8);
+        System.out.println(Arrays.toString(tabell3));
+
+        int[] tabell4 = {1,2,3,4,5,6,7,8,9,10};
+        randPerm9(tabell4, 5, 8);
+        System.out.println(Arrays.toString(tabell4));
+
+        int[] tabell5 = {1,2,3,4,5,6,7,8,9,10};
+        randPerm9(tabell5, 5, 8);
+        System.out.println(Arrays.toString(tabell5));
+
+        int[] tabell6 = {1,2,3,4,5,6,7,8,9,10};
+        randPerm9(tabell6, 5, 8);
+        System.out.println(Arrays.toString(tabell6));*/
+
+        // Oppgavekode 1.1.8 | 12.
+        /*System.out.println(Arrays.toString(randPerm8(2, 8)));
+
+        System.out.println(Arrays.toString(randPerm10(10, 5)));*/
+
+        // Programkode 1.1.9 a)
+        /*System.out.println(antallMaks(randPerm6(100000)));*/
+
+        // Programkode 1.1.11
+        int[] a = {8,3,5,7,9,6,10,2,1,4};
+        IntStream s = Arrays.stream(a);
+        OptionalInt maks = s.max();
+        if (maks.isPresent()) System.out.println(maks.getAsInt());
+        else System.out.println("Ingen verdi!");
+
+        s = Arrays.stream(a);
+        OptionalInt min = s.min();
+        if (min.isPresent()) System.out.println(min.getAsInt());
+        else System.out.println("Ingen verdi!");
+
+        s = Arrays.stream(a);
+        int sum = s.sum();
+        System.out.println(sum);
+
+        s = Arrays.stream(a);
+        OptionalDouble gjennomsnitt = s.average();
+        if (gjennomsnitt.isPresent()) System.out.println(gjennomsnitt.getAsDouble());
+        else System.out.println("Ingen verdi!");
+
+        s = Arrays.stream(a);
+        IntSummaryStatistics k = s.summaryStatistics();
+        System.out.printf("%-8s%3d\n", "maks: ", k.getMax());
+        System.out.printf("%-8s%3d\n", "min: ", k.getMin());
+        System.out.printf("%-8s%3d\n", "sum: ", k.getSum());
+        System.out.printf("%-8s%3d\n", "antall: ", k.getCount());
+        System.out.printf("%-8s%3.1f\n","snitt: ", k.getAverage());
     }
 }
