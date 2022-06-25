@@ -26,6 +26,42 @@ Oppgaver til Avsnitt 1.3.1
 
 
 
+Oppgaver til Avsnitt 1.3.2
+    1.	Hvor mange inversjoner har premutasjonen 3 5 4 7 6 8 1 2 9 10 ?
+
+2 + 3 + 2 + 3 + 2 + 2 + 0 + 0 + 0 + 0 = 14
+//ok 1.3.2 | 1.
+
+
+    2.	Finn en permutasjon av tallene fra 1 til 10 med 22 inversjoner og en som har 23 stykker.
+
+10 9 1 2 8 3 4 5 6 7
+7 6 5 4 3 8 2 1 9 10
+
+
+
+Oppgaver til Avsnitt 1.3.3
+    1.	Sjekk at Programkode 1.3.3 f) virker. Lag en serie permutasjoner (bruk randPerm) av tallene fra 1 til 10. Skriv ut resultatet.
+
+//ok 1.3.3 | 1.
+
+
+    2.	Sammenlign Programkode 1.3.3 e) og f). Kall dem boblesortering1 og boblesortering2. Lag så store tilfeldige permutasjoner at den ene bruker noen sekunder. Ta en kopi før du sorterer. Hvor lang tid vil den andre bruke (på kopien).
+
+
+
+
+    3.	Lag en versjon der gjennomgangene går motsatt vei (fra høyre mot venstre).
+
+//ok 1.3.3 | 3.
+
+
+    4.	Lag kode som generer innholdet i tabellen i Figur 1.3.3 b). Både vha. formelen k!kn-k og ved å generere alle mulige permutasjoner og så telle opp.
+
+
+
+
+    5.	I gjennomgang k (k = 1 til n − 1) i Programkode 1.3.3 e) blir det i gjennomsnitt utført n + k (Hk − Hn − 1) ombyttinger. Se Formel 1.3.3 a). Med n = 10 og k = 1, blir det lik 7,07. La fortsatt n være 10. Hva blir det for k = 2 og 3? Lag kode som regner (og skriver) det ut for hver k. Summér alle verdiene og sjekk at summen blir lik n(k − 1)/4.
 
 
 

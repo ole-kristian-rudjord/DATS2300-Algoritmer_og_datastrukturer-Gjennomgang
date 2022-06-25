@@ -697,6 +697,87 @@ public class Tabell {
 
         return true;
     }
+
+    //pk 1.3.2 a)
+    public static int inversjoner(int[] a) {
+        int antall = 0;
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[i] > a[j]) {
+                    antall++;
+                }
+            }
+        }
+        return antall;
+    }
+
+    //pk 1.2.2 c)
+    public static boolean erSortert(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            if (a[i-1] > a[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //pk 1.3.3 a)
+    public static int boble(int[] a) {
+        int antall = 0;
+        for (int i = 1; i < a.length; i++) {
+            if (a[i - 1] > a[i]) {
+                bytt(a, i - 1, i);
+                antall++;
+            }
+        }
+        return antall;
+    }
+
+    //pk 1.3.3 d)
+    /*public static void boblesortering(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            boble(a);
+        }
+    }*/
+
+    //pk 1.3.3 e)
+    /*public static void boblesortering(int[] a) {
+        for (int n = a.length; n > 1; n--) {
+            for (int i = 1; i < n; i++) {
+                if (a[i - 1] > a[i]) {
+                    bytt(a, i - 1, i);
+                }
+            }
+        }
+    }*/
+
+    //pk 1.3.3 f)
+    public static void boblesortering(int[] a) {
+        for (int n = a.length; n > 1; ) {
+            int byttindeks = 0;
+            for (int i = 1; i < n; i++) {
+                if (a[i - 1] > a[i]) {
+                    bytt(a, i - 1, i);
+                    byttindeks = i;
+                }
+            }
+            n = byttindeks;
+        }
+    }
+
+    //ok 1.3.3 | 3.
+    public static void boblesorteringMotsatt(int[] a) {
+        for (int n = 0; n < a.length - 1; ) {
+            int byttindeks = a.length - 1;
+            for (int i = a.length - 2; i >= n; i--) {
+                if (a[i] > a[i + 1]) {
+                    bytt(a, i, i + 1);
+                    byttindeks = i;
+                }
+            }
+            n = byttindeks;
+        }
+    }
 }
 
 
