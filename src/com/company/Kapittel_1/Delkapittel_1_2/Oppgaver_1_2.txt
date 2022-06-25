@@ -51,9 +51,374 @@ Oppgaver til Avsnitt 1.2.2
 
     6.	Som i Oppgave 4 og 5, men med en tabell c av typen char[].
 
-
+//ok 1.2.2 | 6.
 
 
     7.	Lag metoden public static int[] naturligeTall(int n). Den skal returnere en heltallstabell som inneholder tallene 1, 2, . . . , n. Hvis n er mindre enn 1 skal det kastes et unntak. Lag også den mer generelle metoden public static int[] heleTall(int fra, int til). Den skal returnere en heltallstabell som inneholder tallene fra og med fra og til, men ikke med, tallet til. For eksempel skal kallet heleTall(1,6) gi tabellen {1, 2, 3, 4, 5}. Hvis fra er større enn til kastes et unntak. Hvis fra er lik til returneres en tom tabell. Legg metodene i samleklassen Tabell.
+
+
+
+
+Oppgaver til Avsnitt 1.2.3
+    1.	Legg metodene Programkode 1.2.3 a) og 1.2.3 d), inn i samleklassen Tabell.
+
+//pk 1.2.3 a)
+//pk 1.2.3 d)
+
+
+    2.	Sett deg inn i (se kildekoden) metoden rangeCheck() i Arrays.
+
+
+
+
+    3.	Gjør om maks-metoden i Programkode 1.2.1 b), som du nå skal ha lagt inn i class Tabell, slik at parameterverditesten blir erstattet med Programkode 1.2.3 b) og c). Lag så et testprogram der maks-metoden inngår (bruk main i class Program), men med parameterverdier som du vet vil føre til at unntak kastes. Velg verdier slik at du får frem alle de mulige feilmeldingstypene.
+
+//ok 1.2.3 | 3.
+
+
+    4.	Gå videre fra Oppgave 3. Dvs. lag også kode som tester parameteren a og som gir en fornuftig feilmelding hvis a er null.
+
+//ok 1.2.3 | 4.
+
+
+    5.	I Oppgave 5, 6 og 7 i Avsnitt 1.2.2 skulle det lages metoder som arbeidet i et halvåpent intervall. Bruk metoden fratilKontroll() til å sjekke at intervallene er lovlige.
+
+//ok 1.2.3 | 5.
+
+
+    6.	Lag metoden public static void snu(int[] a, int v, int h). Metoden skal snu rekkefølgen på verdiene i intervallet a[v:h]. Hvis intervallet f.eks. inneholder verdiene 4, 2, 13, 7, skal intervallet etter et kall på metodene inneholde 7, 13, 2, 4. Bruk metoden vhKontroll() til å sjekke lovligheten av intervallet. Lag også en metode som snur en hel tabell. Legg metodene i samleklassen Tabell.
+
+//ok 1.2.3 | 6.
+
+
+    7.	Gjør som i Oppgave 6, men med en char-tabell. Lag først, hvis du ikke har gjort det tidligere, en bytt-metode som bytter om to elementer i en char-tabell.
+
+//ok 1.2.3 | 7.
+
+
+    8.	Sett deg mer inn i bruk av unntak (exceptions). Se f.eks. Vedlegg D.
+
+
+
+
+Oppgaver til Avsnitt 1.2.4
+    1.	Legg nestMaks-metoden fra Programkode 1.2.4 a) i samleklassen Tabell. Legg så Programkode 1.2.4 b) inn i main-metoden i klassen Program og sjekk at du får rett svar. Obs. Du får andre svar enn det som eksempelutskriften i Programkode 1.2.4 b) viser siden metoden randPerm gir nye permutasjoner hver gang den kalles.
+
+
+
+
+    2.	Lag en versjon av nestmaks-metoden der du bytter om slik at den største kommer forrest. Dermed kan letingen etter den nest største starte i posisjon 1. Pass på og bytt tilbake før metoden avslutter slik at tabellen kommer tilbake i sin originale tilstand. Obs. Det blir et spesialtilfelle her når den nest største verdien ligger forrest i tabellen. Pass på at det tilfellet behandles rett.
+
+//ok 1.2.4 | 2.
+
+
+    3.	Som i Oppgave 2, men bytt om slik at den største havner bakerst. Obs. Det blir et spesialtilfelle her når den nest største verdien ligger bakerst i tabellen. Pass på at det tilfellet behandles rett.
+
+//ok 1.2.4 | 3.
+
+
+    4.	Idéen i Oppgave 3 kan utvides til å bli en sorteringsalgoritme. Finn først den største og bytt om slik at den kommer bakerst. Finn så den største i det intervallet som ikke har med den siste og bytt om slik at den kommer nest bakerst. Finn så den største i intervallet som ikke har med de to siste og bytt om slik at den kommer på tredje bakerst. Osv. Lag metoden public static void sortering(int[] a) med dette som idé.
+
+//ok 1.2.4 | 4.
+
+
+    5.	Hvis du har en min-metode (se Oppgave 1 i Avsnitt 1.2.1) kan du gjøre som i Oppgave 4, men motsatt vei. Finn den minste og bytt om slik at den kommer først. Finn så den minste i det intervallet som starter i posisjon 1 og bytt om slik at den kommer nest først (i posisjon 1), osv.
+
+//ok 1.2.4 | 5.
+
+
+
+
+Oppgaver til Avsnitt 1.2.5
+    1.	Legg nestMaks-metoden fra Programkode 1.2.5 a) inn i samleklassen Tabell, dvs. til erstatning for den som du kanskje har der fra før. Lag kode som sjekker at den virker som den skal. Se f.eks. Programkode 1.2.4 b).
+
+//pk 1.2.5 a)
+
+
+    2.	Bruk den største mulige int-verdien som vaktpost og legg den bakerst i tabellen. Da kan vi ta vekk testen i < n i for-løkken i Programkode 1.2.5 a). Gjør dette! Se hvordan det er gjort i Avsnitt 1.1.5.
+
+//ok 1.2.5 | 2.
+
+
+    3.	Lag en nestMin-metode med samme idé som i Programkode 1.2.5 a).
+
+//ok 1.2.5 | 3.
+
+
+    4.	Lag metoden public static int[] tredjeMaks(int[] a). Den skal returnere en tabell som inneholder posisjonene til de tre største verdiene. Bruk en idé tilsvarende den i Programkode 1.2.5 a).
+
+//ok 1.2.5 | 4.
+
+
+
+
+Oppgaver til Avsnitt 1.2.6
+    1.	Sjekk at versjonen av nestMaks-metoden i Programkode 1.2.5 a) utfører nøyaktig 2n − 3 sammenligninger når tabellen er sortert.
+
+public static int[] nestMaks(int[] a) {
+    int n = a.length;       1
+
+    if (n < 2) {            1
+        throw new NoSuchElementException("a.length(" + n + ") < 2!");       x
+    }
+
+    int m = 0;              1
+    int nm = 1;             1
+
+    if (a[1] > a[0]) {      3
+        m = 1;              x
+        nm = 0;             x
+    }
+
+    int maksverdi = a[m];           2
+    int nestmaksverdi = a[nm];      2
+
+    for (int i = 2; i < n; i++) {   1 | n - 1 | n - 2
+        if (a[i] > nestmaksverdi) {     2n - 2
+            if (a[i] > maksverdi) {     2nx - 2
+                nm = m;                 x
+                nestmaksverdi = maksverdi;  x
+
+                m = i;                  x
+                maksverdi = a[m];       2x
+            }
+            else {
+                nm = i;                 x
+                nestmaksverdi = a[nm];  2x
+            }
+        }
+    }
+
+    return new int[] {m, nm};           1
+}
+
+
+    2.	For hvilke tabeller bruker metoden færrest mulig sammenligninger?
+
+Færrest mulig sammenligninger skjer når tabellen starter med maksverdien og neste verdi er nestmaksverdien.
+
+
+    3.	Er det noen forskjell på gjennomsnittlig effektivitet, effektiviteten i det mest ugunstige tilfellet og effektiviteten i det beste tilfellet for maks-metoden, dvs. for den metoden som finner posisjonen til den største verdien i en tabell?
+
+Antall sammenligninger er alltid den samme ettersom vi må gå gjennom hele listen.
+
+
+
+
+Oppgaver til Avsnitt 1.2.7
+    1.	Sjekk at påstanden i Setning 1.2.7 a) stemmer for n = 5 ved å se på alle de 120 permutasjonene av tallene fra 1 til 5. Se også Oppgave 1 i Avsnitt 1.1.6.
+
+
+
+
+    2.	Lag metoden int antallNestMaks(int[] a). Den skal telle opp og returnere det antallet ganger a[i] > nestmaksverdi er sann i Programkode 1.2.5 a). Kjør metoden på tabeller med tilfeldige permutasjoner og sammenlign med den teoretiske verdien.
+
+//ok 1.2.7 | 2.
+
+
+    3.	Hvorfor n − 1 sammenligninger i det beste tilfellet. Se også Oppgave 2 i Avsnitt 1.2.6.
+
+
+
+
+
+Oppgaver til Avsnitt 1.2.8
+    1.	Et «møte» er det samme som en sammenligning. Hvor mange sammenligninger trengs for å gjennomføre en turnering med 16 deltagere slik som i Figur 1.2.8 a)? Hva med 8 deltagere? Hva med 2k deltagere der k er et positivt heltall.
+
+Med 8 deltakere kreves 3 sammenligninger. Med 2ˆk krever k sammenligninger.
+
+
+    2.	Tegn et turneringstre slik som i Figur 1.2.8 a) for tilfellene: a) 3, 15, 8, 11, 13, 9, 10, 5 og b) 10, 17, 13, 16, 17, 8, 12, 15, 9, 15, 16, 15, 10, 13, 14, 17.
+
+
+
+
+    3.	Bruk de samme 16 verdiene som i Figur 1.2.8 a). Lag en turnering for å finne minst verdi.
+
+
+
+
+
+Oppgaver til Avsnitt 1.2.9
+    1.	Finn antall noder i Figur 1.2.8 a)? Hvor mange er bladnoder? Hvor mange er indre noder?
+
+Noder: 31
+Bladnoder: 16
+Indre noder: 14
+
+
+    2.	Hvor mange noder er det på nivå k (k = 0, 1, 2, . . ) i et turneringstre av den typen som Figur 1.2.8 a) viser?
+
+Noder i nivå k = 2^k
+
+
+    3.	Anta at antall deltagere n i en turnering er på formen n = 2^k, dvs. n = 1, 2, 4, 8, osv. Finn svarene på flg. spørsmål uttrykt ved n: Hvor mange noder får turneringstreet? Hvilken høyde får treet? Hvor mange er bladnoder og hvor mange er indre noder? Hvor mange sammenligninger utføres i turneringen?
+
+Hvor mange noder får turneringstreet?
+    2n - 1
+
+Hvilken høyde får treet?
+    log2n
+
+Hvor mange er blandnoder og hvor mange er indre noder?
+    bladnoder = n
+    indre noder = n - 1
+
+Hvor mange sammenligninger utføres i turneringen?
+    n - 1
+
+
+
+Oppgaver til Avsnitt 1.2.11
+    1.	Svar på flg. spørsmål for hvert av trærne A, B, C, D, E og F over: a) Er treet komplett? b) Er treet perfekt?  c) Er treet fullt?  d) Hva er treets høyde?  e) Hvor mange bladnoder har treet?  f) Er det et turneringstre?
+
+Tre A:
+a) Nei
+b) Nei
+c) Ja
+d) 3
+e) 6
+f) Nei
+
+Tre B:
+a) Nei
+b) Nei
+c) Ja
+d) 3
+e) 6
+f) Nei
+
+Tre C:
+a) Nei
+b) Nei
+c) Nei
+d) 3
+e) 6
+f) Nei
+
+Tre D:
+a) Nei
+b) Nei
+c) Nei
+d) 3
+e) 4
+f) Nei
+
+Tre E:
+a) Ja
+b) Nei
+c) Ja
+d) 3
+e) 7
+f) Ja
+
+Tre F:
+a) Nei
+b) Nei
+c) Nei
+d) 3
+e) 4
+f) Nei
+
+
+    2.	Tegn et perfekt binærtre med høyde 3. Tegn et komplett binærtre med 10 noder. Tegn et komplett binærtre med 20 noder.
+
+
+
+
+    3.	Tegn et fullt binærtre med 5 noder? Hvor mange slike finnes det? Hvor mange fulle binærtrær med 7 noder finnes det? Vis at antallet noder i et fullt binærtre alltid er et odde tall.
+
+Antall fulle binærtrær med 5 noder = 2
+Antall fulle binærtrær med 7 noder = 5
+
+
+    4.	Vis at ⌈log2(n+1)⌉ - 1 = ⌊log2(n)⌋ for n >= 1   Se forøvrig Setning 1.2.11.
+
+
+
+
+Oppgaver til Avsnitt 1.2.12
+    1.	Turneringstreet i Figur 1.2.10 c) hadde 13 deltagere som utgangspunkt. Da var det 3 deltagere som fikk «walk over». Hvor mange deltagere vil få «walk over» hvis turneringen har a) 14,  b) 15 og c) 16 deltagere? Kan du finne en formel for hvor mange deltagere som får «walk over» hvis antallet deltagere i turneringen er n?
+
+((2^(log2(n) + 1) - 1) - (2n - 1)) / 2
+2^h - n
+
+a) 2
+b) 1
+c) 0
+
+
+    2.	Lag et program som sjekker at Programkode 1.2.12 a) og 1.2.12 b) gir samme svar for alle positive verdier av n. Lag f.eks. en for-løkke som går fra n = 1 og et stykke utover.
+
+//ok 1.2.12 | 2.
+
+
+
+Oppgaver til Avsnitt 1.2.13
+    1.	Sjekk at Programkode 1.2.13 a) virker. Obs: metoden returnerer størst og nest størst verdi og ikke indeksene. Legg inn en setning som skriver ut tabellen b etter ut turneringen er gjennomført. Dermed kan en se resultatet av turneringen.
+
+//ok 1.2.13 | 1.
+
+
+    2.	La Programkode 1.2.13 a) returnere indeksene til størst og nest størst verdi.
+
+//ok 1.2.13 | 2.
+
+
+    3.	Metoden public static void kopier(int[] a, int i, int[] b, int j, int ant) skal virke som arraycopy() fra class System. Lag den!
+
+//ok 1.2.13 | 3.
+
+
+    4.	Gitt tabeller int[] a og int[] b med a.length <= b.length. Lag kode, vha. arraycopy() eller vha. kopier() fra Oppgave 3, slik at 1) a kopieres inn først i b,  2) a kopieres inn bakerst i b og 3) a kopieres inn på midten av b (gitt at lengdeforskjellen er et partall).
+
+//ok 1.2.13 | 3. a)
+//ok 1.2.13 | 3. b)
+//ok 1.2.13 | 3. c)
+
+
+
+
+Oppgaver til Avsnitt 1.2.14
+    1.	Lag en metode int[] minmaks(int[] a) som returnerer både den minste og den største verdien i tabellen a. Gjør som beskrevet over.
+
+//ok 1.2.14 | 1.
+
+
+    2.	Lag en metode static int kVerdi(int[] a, int k) som finner og returnerer posisjonen til den k-te minste verdien i a. Prøv både idéen i Programkode 1.2.4 a) og idéen i Programkode 1.2.5 a).
+
+//ok 1.2.14 | 2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
