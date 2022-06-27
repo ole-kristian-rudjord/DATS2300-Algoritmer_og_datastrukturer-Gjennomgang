@@ -778,6 +778,145 @@ public class Tabell {
             n = byttindeks;
         }
     }
+
+    //ok 1.3.3 | 4.
+    // ??? Oppgaven har ikke fasit. Forstår ikke hva som er galt her. Hvis k = 3 og n = 10 blir svaret 13122 ved følgende formel:
+    // 3! * (3^(10-3))
+    // Hvorfor stemmer ikke dette med k!k^n-k ?
+    public static int fordelingAvPermutasjoner(int k, int n) {
+        int fakultet = 1;
+        for (int i = 2; i <= k; i++) {
+            fakultet *= i;
+        }
+        int opphøyd = k;
+        for (int i = 1; i < n - k; i++) {
+            opphøyd *= k;
+        }
+        return fakultet * opphøyd;
+    }
+
+    //ok 1.3.3 | 5.
+    public static double H(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("Må ha n >= 1");
+        }
+        double sum = 1.0;
+        for (int k = 2; k <= n; k++) {
+            sum += 1.0/k;
+        }
+        return sum;
+    }
+
+    //pk 1.3.4 a)
+    //ok 1.3.4 | 3.
+    public static void utvalgssorteringMedHelpeMetoder(int[] a)
+    {
+        for (int i = 0; i < a.length - 1; i++)
+            bytt(a, i, min(a, i, a.length));  // to hjelpemetoder
+    }
+
+    //ok 1.3.4 | 5.
+    /*public static void utvalgssortering(int[] a) { // ??? Litt tregere
+        for (int i = 0; i < a.length - 1; i++) {
+            int m = i;
+            for (int j = i+1; j < a.length; j++) {
+                if (a[j] < a[m]) {
+                    m = j;
+
+                    int temp = a[i];
+                    a[i] = a[m];
+                    a[m] = temp;
+                }
+            }
+        }
+    }*/
+
+    //ok 1.3.4 | 6.
+    public static void utvalgssortering(int[] a) { // ??? Litt tregere
+        for (int i = 0; i < a.length - 1; i++)
+        {
+            int m = i;             // indeks til den foreløpig minste
+            int  minverdi = a[i];  // verdien til den foreløpig minste
+
+            for (int j = i + 1; j < a.length; j++)
+            {
+                if (a[j] < minverdi)
+                {
+                    minverdi = a[j];  // ny minste verdi
+                    m = j;            // indeksen til ny minste verdi
+                }
+            }
+            // bytter om a[i] og a[m]
+            a[m] = a[i];
+            a[i] = minverdi;
+        }
+    }
+
+    //ok 1.3.4 | 7.
+    public static void utvalgssorteringMotsatt(int[] a)
+    {
+        for (int i = a.length - 1; i > 0; i--)
+        {
+            int m = 0;              // indeks til den foreløpig største
+            int  maksverdi = a[0];  // verdien til den foreløpig minste
+
+            for (int j = 1; j < i; j++)
+            {
+                if (a[j] > maksverdi)
+                {
+                    maksverdi = a[j];  // ny minste verdi
+                    m = j;            // indeksen til ny minste verdi
+                }
+            }
+            // bytter om a[i] og a[m]
+            a[m] = a[i];
+            a[i] = maksverdi;
+        }
+    }
+
+    //ok 1.3.4 | 8.
+    public static void utvalgssorteringAvtakende(int[] a) { // ??? Litt tregere
+        for (int i = 0; i < a.length - 1; i++)
+        {
+            int m = i;             // indeks til den foreløpig minste
+            int maksverdi = a[i];  // verdien til den foreløpig minste
+
+            for (int j = i + 1; j < a.length; j++)
+            {
+                if (a[j] > maksverdi)
+                {
+                    maksverdi = a[j];  // ny minste verdi
+                    m = j;            // indeksen til ny minste verdi
+                }
+            }
+            // bytter om a[i] og a[m]
+            a[m] = a[i];
+            a[i] = maksverdi;
+        }
+    }
+
+    //ok 1.3.4 | 9.
+    public static void utvalgssortering(int[] a, int fra, int til) {
+        fratilKontroll(a.length, fra, til);
+
+        for (int i = fra; i < til - 1; i++)
+        {
+            int m = i;
+            int  minverdi = a[i];
+
+            for (int j = i + 1; j < til; j++)
+            {
+                if (a[j] < minverdi)
+                {
+                    minverdi = a[j];
+                    m = j;
+                }
+            }
+
+            a[m] = a[i];
+            a[i] = minverdi;
+        }
+    }
 }
 
 

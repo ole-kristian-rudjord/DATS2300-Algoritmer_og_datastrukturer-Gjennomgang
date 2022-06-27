@@ -58,16 +58,71 @@ Oppgaver til Avsnitt 1.3.3
 
     4.	Lag kode som generer innholdet i tabellen i Figur 1.3.3 b). Både vha. formelen k!kn-k og ved å generere alle mulige permutasjoner og så telle opp.
 
+//ok 1.3.3 | 4.
+
+
+    5.	I gjennomgang k (k = 1 til n − 1) i Programkode 1.3.3 e) blir det i gjennomsnitt utført n + k(Hk − Hn − 1) ombyttinger. Se Formel 1.3.3 a). Med n = 10 og k = 1, blir det lik 7,07. La fortsatt n være 10. Hva blir det for k = 2 og 3? Lag kode som regner (og skriver) det ut for hver k. Summér alle verdiene og sjekk at summen blir lik n(k − 1)/4.
+
+//ok 1.3.3 | 5.
 
 
 
-    5.	I gjennomgang k (k = 1 til n − 1) i Programkode 1.3.3 e) blir det i gjennomsnitt utført n + k (Hk − Hn − 1) ombyttinger. Se Formel 1.3.3 a). Med n = 10 og k = 1, blir det lik 7,07. La fortsatt n være 10. Hva blir det for k = 2 og 3? Lag kode som regner (og skriver) det ut for hver k. Summér alle verdiene og sjekk at summen blir lik n(k − 1)/4.
+Oppgaver til Avsnitt 1.3.4
+    1.	I Figur 1.3.4 d) er det gjort tre iterasjoner. Hva blir det etter i) 5 og ii) 7 iterasjoner.
+
+i)
+3	4	5	6	7	19	21	23	10	14	15	11	16	17	8
+
+ii)
+3	4	5	6	7	8   10	23	10	14	15	11	16	17	19
 
 
+    2.	Start med tabellen i Figur 1.3.4 a). Utfør tre iterasjoner der du isteden finner den største av de usorterte og bytter om slik at den kommer bakerst av de usorterte.
+
+15	8	17	16	5	6	7	4	10	14	3	11	19	21	23
 
 
+    3.	Legg metoden i Programkode 1.3.4 a) inn i samleklassen Tabell. Pass på at du da allerede har metodene bytt() og min() der. Se også Oppgave 1 i Avsnitt 1.2.1. Sjekk så at Programkode 1.3.4 b) virker.
+
+//ok 1.3.4 | 3.
 
 
+    4.	Kjør programbiten fra Oppgave 2 i Avsnitt 1.3.3, men bruk isteden utvalgssortering. Er den bedre enn boblesortering?
+
+//ok 1.3.4 | 4.
+
+
+    5.	utvalgssortering i Programkode 1.3.4 a) bruker to hjelpemetoder. Det er mest vanlig å kode den uten hjelpemetoder. Søk på internett. Bruk «selection sort» som søkeord. Lag så din egen versjon (uten hjelpemetoder)! Hvor lang tid bruker den for en tilfeldig tabell med 100000 verdier? Er den bedre enn den fra Programkode 1.3.4 a)?
+
+//ok 1.3.4 | 5.
+
+
+    6.	I løsningsforslaget til Oppgave 5 over gjøres en «ekte» ombytting ved hjelp av flg. kode: int temp = a[i]; a[i] = a[m]; a[m] = temp; Det er slik hjelpemetoden bytt() er kodet. Her er det imidlertid mulig å forenkle noe siden vi vet at a[m] og minverdi er like. Gjør de endringene som trengs. Hvor mange operasjoner sparer du inn?
+
+//ok 1.3.4 | 6.
+
+
+    7.	Lag en versjon av utvalgssortering der den omvendte idéen brukes. Dvs. størst legges bakerst, nest størst nest bakerst, osv.
+
+//ok 1.3.4 | 7.
+
+
+    8.	Lag en versjon av utvalgssortering som sorterer avtagende.
+
+//ok 1.3.4 | 8.
+
+
+    9.	Lag metoden public static void utvalgssortering(int[] a, int fra, int til). Den skal sortere intervallet a[fra:til>. Pass på at du tester lovligheten til intervallet!
+
+//ok 1.3.4 | 9.
+
+
+    10.	En sorteringsalgoritme kalles stabil hvis like verdier har samme innbyrdes rekkefølge etter sorteringen som de hadde før. Er utvalgssortering stabil?
+
+Den er ikke stabil
+
+
+    11.	Ta utgangspunkt i den versjonen av utvalgssortering som står i Programkode 1.3.4 a). Men gjør ingen ombytting i det tilfellet samme verdi vil bli byttet med seg selv. Det vil påføre algoritmen en ekstra kostnad siden det må gjøres en sammenligning hver gang, men spare arbeidet med unødvendige ombyttinger. Finn ut, ved å bruke tilfeldige permutsajoner, hvor mange ganger det skjer at en verdi ville ha blitt byttet med seg selv. Spesielt hvis tabellen allerede er sortert, byttes en verdi med seg i hver iterasjon. Kanskje du klarer å finne en formel for det gjennomsnittlige antall ganger en verdi vil bli byttet med seg selv? Vil det lønne seg å ha denne ekstra testen?
 
 
 

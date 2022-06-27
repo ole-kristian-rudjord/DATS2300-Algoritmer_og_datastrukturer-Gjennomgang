@@ -1,12 +1,14 @@
 package com.company.Kapittel_1.hjelpeklasser;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 import static com.company.Kapittel_1.Delkapittel_1_1.Oppgave1_1_9__2.antallMaks;
+import static com.company.Kapittel_1.hjelpeklasser.Tabell.H;
 
 public class Program {
     public static void main(String[] args) {
-        /*int[] a = Tabell.randPerm(10);*/
+        int[] randPerm = Tabell.randPerm(10);
         /*for (int k : a) System.out.println(k + " ");
 
         int m = Tabell.maks(a);
@@ -165,12 +167,71 @@ public class Program {
         }*/
 
         //ok 1.3.3 | 3.
-        for (int i = 0; i < 3; i++) {
+        /*for (int i = 0; i < 3; i++) {
             int[] a = Tabell.randPerm(10);
             System.out.println(Arrays.toString(a));
             Tabell.boblesorteringMotsatt(a);
             System.out.println(Arrays.toString(a));
             System.out.println();
+        }*/
+
+        //ok 1.3.3 | 4. ???
+        /*System.out.println(Tabell.fordelingAvPermutasjoner(3, 10));*/
+
+        //ok 1.3.3 | 5.
+        /*int n = 10;
+        double Hn = H(n);
+
+        double sum = 0.0;
+        for (int k = 1; k < n; k++) {
+            double ombyttinger = (n + k*(H(k) - Hn - 1));
+            sum += ombyttinger;
+            System.out.printf("%5.2f\n", ombyttinger);
         }
+
+        System.out.println(sum + " " + n*(n-1)/4.0);*/
+
+        /*Tabell.utvalgssortering(a);
+        System.out.println(Arrays.toString(a));*/
+
+        /*int[] a = {7,5,9,2,10,4,1,8,6,3};     // en usortert heltallstabell
+        Tabell.utvalgssortering(a);           // stigende sortering
+        Tabell.snu(a);                        // tabellen snus
+        Tabell.skriv(a);                      // 10 9 8 7 6 5 4 3 2 1*/
+
+        //pk 1.3.4 a)
+        //ok 1.3.4 | 3.
+        /*Tabell.utvalgssortering(randPerm);
+        Tabell.skriv(randPerm);*/
+
+        //ok 1.3.4 | 4.
+        /*int[] a = Tabell.randPerm(50000);        // en tilfeldig permutasjon
+        int[] b = a.clone();                     // en kopi
+        long tid = System.currentTimeMillis();   // leser av klokken
+        Tabell.boblesortering(a);               // sorterer a
+        tid = System.currentTimeMillis() - tid;  // tidsforbruket
+        System.out.println(tid);                 // skriver ut
+
+        tid = System.currentTimeMillis();        // leser av klokken
+        Tabell.utvalgssorteringMedHelpeMetoder(b);               // sorterer b
+        tid = System.currentTimeMillis() - tid;  // tidsforbruket
+        System.out.println(tid);                 // skriver ut*/
+
+        //ok 1.3.4 | 5.
+        /*int[] a = Tabell.randPerm(50000);        // en tilfeldig permutasjon
+        int[] b = a.clone();                     // en kopi
+        long tid = System.currentTimeMillis();   // leser av klokken
+        Tabell.boblesortering(a);               // sorterer a
+        tid = System.currentTimeMillis() - tid;  // tidsforbruket
+        System.out.println(tid);                 // skriver ut
+
+        tid = System.currentTimeMillis();        // leser av klokken
+        Tabell.utvalgssorteringMedHelpeMetoder(b);               // sorterer b
+        tid = System.currentTimeMillis() - tid;  // tidsforbruket
+        System.out.println(tid);                 // skriver ut*/
+
+        System.out.println(Arrays.toString(randPerm));
+        Tabell.utvalgssortering(randPerm, 0, 5);
+        System.out.println(Arrays.toString(randPerm));
     }
 }
